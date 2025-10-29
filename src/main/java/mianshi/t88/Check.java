@@ -10,7 +10,10 @@ import com.alibaba.fastjson.JSONObject;
 public class Check {
     public static void main(String[] args) {
         // fastSort(new int[]{3,2,1},0,2);
+        //合并之后再排序
         merge1(new int[]{4, 5, 6, 0, 0, 0}, 3, new int[]{1, 2, 3}, 3);
+
+        //双指针
     }
 
     //合并之后再排序
