@@ -18,9 +18,9 @@ public class Check {
         int base = 0;
         for (int i = 0;i<nums.length;i++){
             if (nums[i]!=val){
-                int tmp = nums[base];
+
                 nums[base] = nums[i];
-                nums[i] = tmp;
+
                 base++;
             }
 
