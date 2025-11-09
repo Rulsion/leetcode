@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -40,6 +41,8 @@ public class NioSendFileReceiver {
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
         log.info("开启监听！");
+
+        //文件的bytebuffer结构【文件名长度（4个字节）|文件名内容|文件大小（8个字节）|文件内容】
         while (selector.select() > 0) {
             Set<SelectionKey> selectionKeys = selector.selectedKeys();
             Iterator<SelectionKey> iterator = selectionKeys.iterator();
@@ -59,6 +62,8 @@ public class NioSendFileReceiver {
                     socketChannel.register(selector, SelectionKey.OP_READ);
                 }
                 if (selectionKey.isReadable()) {
+
+                    ByteBuffer buffer = ByteBuffer.allocate(1024);
 
 
                 }
